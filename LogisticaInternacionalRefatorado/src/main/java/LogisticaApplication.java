@@ -8,6 +8,7 @@ import infra.tax.InternacionalTaxStrategy;
 import infra.tax.NacionalTaxStrategy;
 import infra.transport.FreteAereoStrategy;
 import infra.transport.FreteMaritimoStrategy;
+import infra.transport.FreteTerrestreStrategy;
 import service.LogisticaService;
 
 import java.util.Scanner;
@@ -32,12 +33,17 @@ public class LogisticaApplication {
                 ? new InternacionalTaxStrategy()
                 : new NacionalTaxStrategy();
 
-        System.out.println("Escolha a forma de envio: 1- Marítimo | 3- Aéreo");
+        System.out.println("Escolha a forma de envio: 1- Marítimo | 2- Terrestre | 3- Aéreo");
         int opcao = scanner.nextInt();
 
-        FreteStrategy estrategiaSelecionada = (opcao == 1)
-                ? new FreteMaritimoStrategy()
-                : new FreteAereoStrategy();
+        FreteStrategy estrategiaSelecionada;
+
+        switch (opcao){
+            case 1: estrategiaSelecionada = new FreteMaritimoStrategy(); break;
+            case 2: estrategiaSelecionada = new FreteTerrestreStrategy();break;
+            case 3: estrategiaSelecionada = new FreteAereoStrategy();break;
+            default: throw new IllegalArgumentException("Forma de envio Inválida");
+        }
 
         service.calcularEnvio(peso, estrategiaSelecionada, taxaSelecionada);
 
