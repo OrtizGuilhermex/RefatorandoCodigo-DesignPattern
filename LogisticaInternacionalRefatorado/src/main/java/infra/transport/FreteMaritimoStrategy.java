@@ -1,4 +1,4 @@
-/**package infra.transport;
+package infra.transport;
 
 import domain.strategy.FreteStrategy;
 
@@ -8,4 +8,3 @@ public class FreteMaritimoStrategy implements FreteStrategy {
         return peso * 5.0;
     }
 }
-*/
