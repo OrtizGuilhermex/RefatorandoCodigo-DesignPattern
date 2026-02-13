@@ -1,5 +1,7 @@
 package domain.strategy;
 
+import domain.model.Frete;
+
 public interface FreteRepository {
-    double calcularFrete (double peso);
+    void salvar(Frete frete);
 }
