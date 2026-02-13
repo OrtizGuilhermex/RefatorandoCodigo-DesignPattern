@@ -27,6 +27,8 @@ public class SistemaLogisticaInternacional {
         custoTotal += imposto;
 
         System.out.println("Gerando manifesto unificado de Porto/Aeroporto/Trem...");
+        System.out.println("Salvando no Banco de Dados SQL Server: INSERT INTO FRETE...");
+        System.out.println("Enviando E-mail para o cliente: Seu frete de R$" + custoTotal + " foi processado.");
     }
 
     public static void main(String[]args){
