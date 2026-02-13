@@ -9,8 +9,19 @@ public class SistemaLogisticaInternacional {
         System.out.println("Digite o peso da carga (kg): ");
         double peso = scanner.nextDouble();
 
-        System.out.println("Digite o tipo de transporte (1- Maritimo, 2- Aereo): ");
+        System.out.println("Digite o tipo de transporte (1- Marítimo, 2- Aéreo): ");
         int tipo = scanner.nextInt();
+
+        double custoTotal = 0;
+
+        if (tipo == 1){
+            custoTotal = peso * 5.0;
+            System.out.println("Processando via Marítimo...");
+        } else if (tipo == 2){
+            custoTotal = peso * 15.0;
+            custoTotal += 500;
+            System.out.println("Processando via Aéreo...");
+        }
     }
 
     public static void main(String[]args){
