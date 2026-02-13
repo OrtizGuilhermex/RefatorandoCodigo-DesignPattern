@@ -4,6 +4,7 @@ import domain.model.Frete;
 import domain.strategy.FreteRepository;
 import domain.strategy.FreteStrategy;
 import domain.strategy.NotificacaoService;
+import domain.strategy.TaxaStrategy;
 
 public class LogisticaService {
 
@@ -16,9 +17,9 @@ public class LogisticaService {
         this.notificacaoService = notificacaoService;
     }
 
-    public void calcularEnvio(double peso, FreteStrategy estrategia){
+    public void calcularEnvio(double peso, FreteStrategy estrategia, TaxaStrategy taxaStrategy){
         double valorBase = estrategia.calcularFrete(peso);
-        double imposto = (valorBase * 0.60);
+        double imposto = taxaStrategy.calcularImposto(valorBase);
 
         Frete frete = new Frete(peso,valorBase,imposto);
 
