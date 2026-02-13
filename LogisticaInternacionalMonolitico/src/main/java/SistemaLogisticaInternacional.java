@@ -22,6 +22,11 @@ public class SistemaLogisticaInternacional {
             custoTotal += 500;
             System.out.println("Processando via Aéreo...");
         }
+
+        double imposto = custoTotal * 0.60;
+        custoTotal += imposto;
+
+        System.out.println("Gerando manifesto unificado de Porto/Aeroporto/Trem...");
     }
 
     public static void main(String[]args){
