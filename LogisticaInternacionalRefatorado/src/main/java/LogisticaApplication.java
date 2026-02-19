@@ -23,7 +23,7 @@ public class LogisticaApplication {
         LogisticaService service = new LogisticaService(freteRepository,notificacaoService);
 
         System.out.println("--- INTERGLOBAL LOGISTICS ---");
-        System.out.print("Peso da carga: ");
+        System.out.print("Peso da carga(Kg): ");
         double peso = scanner.nextDouble();
 
         System.out.println("O frete é: 1- Internacional | 2- Nacional");

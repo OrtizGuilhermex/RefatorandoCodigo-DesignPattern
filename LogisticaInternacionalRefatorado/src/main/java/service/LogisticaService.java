@@ -24,6 +24,6 @@ public class LogisticaService {
         Frete frete = new Frete(peso,valorBase,imposto);
 
         freteRepository.salvar(frete);
-        notificacaoService.enviarNotificacao("Frete internacional processado. Total: " + (valorBase + imposto));
+        notificacaoService.enviarNotificacao("Frete processado. Total: " + (valorBase + imposto));
     }
 }
