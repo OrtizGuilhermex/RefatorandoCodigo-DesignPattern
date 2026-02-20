@@ -6,6 +6,8 @@ import java.sql.SQLException;
 
 public class Conexao {
 
+
+    //CLass responsável pela conexão com banco utilizando mysql
     private static String URL = "jdbc:mysql://localhost:3306/logistica?useSSL=false&serverTimezone=UTC";
     private static String USER = "root";
     private static String PASSWORD = "";

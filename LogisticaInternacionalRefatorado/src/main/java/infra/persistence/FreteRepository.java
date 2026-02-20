@@ -1,14 +1,13 @@
 package infra.persistence;
 
 import domain.model.Frete;
-import domain.strategy.FreteRepository;
 import infra.config.Conexao;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
-public class SqlServerRepository implements FreteRepository {
+public class FreteRepository implements domain.strategy.FreteRepository {
 
     @Override
     public void salvar(Frete frete) {

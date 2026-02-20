@@ -1,9 +1,8 @@
-import domain.strategy.FreteRepository;
 import domain.strategy.FreteStrategy;
 import domain.strategy.NotificacaoService;
 import domain.strategy.TaxaStrategy;
 import infra.notification.EmailService;
-import infra.persistence.SqlServerRepository;
+import infra.persistence.FreteRepository;
 import infra.tax.InternacionalTaxStrategy;
 import infra.tax.NacionalTaxStrategy;
 import infra.transport.FreteAereoStrategy;
@@ -18,7 +17,7 @@ public class LogisticaApplication {
 
         Scanner scanner = new Scanner(System.in);
 
-        FreteRepository freteRepository = new SqlServerRepository();
+        domain.strategy.FreteRepository freteRepository = new FreteRepository();
         NotificacaoService notificacaoService = new EmailService();
         LogisticaService service = new LogisticaService(freteRepository,notificacaoService);
 
