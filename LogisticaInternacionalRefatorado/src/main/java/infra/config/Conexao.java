@@ -6,8 +6,11 @@ import java.sql.SQLException;
 
 public class Conexao {
 
+    /**
+     * Configuração de baixo nível.
+     * Centraliza os detalhes técnicos da conexão JDBC.
+     */
 
-    //CLass responsável pela conexão com banco utilizando mysql
     private static String URL = "jdbc:mysql://localhost:3306/logistica?useSSL=false&serverTimezone=UTC";
     private static String USER = "root";
     private static String PASSWORD = "";

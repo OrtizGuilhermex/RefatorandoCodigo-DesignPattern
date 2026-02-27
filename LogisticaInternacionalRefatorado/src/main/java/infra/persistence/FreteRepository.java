@@ -7,11 +7,15 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 
+/**
+ * SRP: Esta classe tem a única responsabilidade de saber COMO salvar os dados no MySQL.
+ * Ela implementa a interface do domínio para manter o desacoplamento.
+ */
 public class FreteRepository implements domain.strategy.FreteRepository {
 
     @Override
     public void salvar(Frete frete) {
-        String sql = "INSERT INTO fretes (peso, valor_base, imposto, total) VALUES (?, ?, ?, ?)";
+        String sql = "INSERT INTO envios (peso, valor_base, imposto, tipoTransporte ,total) VALUES (?, ?, ?, ?, ?)";
 
         try (Connection conn = Conexao.conectar();
              PreparedStatement stmt = conn.prepareStatement(sql)) {
@@ -19,8 +23,8 @@ public class FreteRepository implements domain.strategy.FreteRepository {
             stmt.setDouble(1, frete.getPeso());
             stmt.setDouble(2, frete.getValorFrete());
             stmt.setDouble(3, frete.getImposto());
-            stmt.setDouble(4, frete.getValorFrete() + frete.getImposto());
-
+            stmt.setString(4, frete.getTipoImposto());
+            stmt.setDouble(5, frete.getValorFrete() + frete.getImposto());
             stmt.executeUpdate();
 
         } catch (SQLException e) {
