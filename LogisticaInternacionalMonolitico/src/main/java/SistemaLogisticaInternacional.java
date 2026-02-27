@@ -1,10 +1,15 @@
 import java.util.Scanner;
 
+// CLASSE MONOLÍTICA: Centraliza entrada de dados, regras de negócio,
+// cálculo de impostos, persistência e comunicação.
 public class SistemaLogisticaInternacional {
 
+    // O metodo faz TUDO: lê do console, calcula, salva e envia e-mail.
     public void processarFrete(){
         Scanner scanner = new Scanner(System.in);
 
+        // --- ACOPLAMENTO COM I/O ---
+        // Se precisarmos mudar para uma interface web ou API, este código quebra.
         System.out.println("--- SISTEMA DE LOGÍSTICA (MONOLÍTICO) ---");
         System.out.println("Digite o peso da carga (kg): ");
         double peso = scanner.nextDouble();
@@ -14,6 +19,9 @@ public class SistemaLogisticaInternacional {
 
         double custoTotal = 0;
 
+        // --- LÓGICA DE NEGÓCIO HARDCODED ---
+        // Números mágicos (5.0, 15.0, 500) dificultam a manutenção.
+        // Se surgir um transporte Terrestre, precisaremos de mais um "else if" (viola o Open/Closed Principle).
         if (tipo == 1){
             custoTotal = peso * 5.0;
             System.out.println("Processando via Marítimo...");
@@ -23,9 +31,14 @@ public class SistemaLogisticaInternacional {
             System.out.println("Processando via Aéreo...");
         }
 
+        // --- LÓGICA TRIBUTÁRIA MISTURADA ---
+        // O cálculo do imposto está fixo e misturado ao fluxo principal.
         double imposto = custoTotal * 0.60;
         custoTotal += imposto;
 
+        // --- INFRAESTRUTURA FANTASMA ---
+        // Simulação de banco de dados e e-mail dentro do metodo de processamento.
+        // Se o banco mudar para NoSQL ou o serviço de e-mail mudar, alteramos a regra de negócio.
         System.out.println("Gerando manifesto unificado de Porto/Aeroporto/Trem...");
         System.out.println("Salvando no Banco de Dados SQL Server: INSERT INTO FRETE...");
         System.out.println("Enviando E-mail para o cliente: Seu frete de R$" + custoTotal + " foi processado.");
